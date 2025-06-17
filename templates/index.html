@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор трансформатора</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Повний розрахунок силового трансформатора</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="calculator-column">
+            <h2>Вхідні параметри</h2>
+                <form id="calc-form">
+                    <label for="S_nom_kVA">Номінальна потужність, кВА:</label>
+                    <input type="number" step="any" id="S_nom_kVA" required>
+
+                    <label for="U_HV_nom_kV">Напруга ВН, кВ:</label>
+                    <input type="number" step="any" id="U_HV_nom_kV" required>
+
+                    <label for="U_LV_nom_kV">Напруга НН, кВ:</label>
+                    <input type="number" step="any" id="U_LV_nom_kV" required>
+
+                    <label for="ukz_percent">Напруга КЗ, %:</label>
+                    <input type="number" step="any" id="ukz_percent" required>
+
+                    <label for="P_nl_kW">Втрати неробочого ходу, кВт:</label>
+                    <input type="number" step="any" id="P_nl_kW" required>
+
+                    <label for="P_sc_kW">Втрати короткого замикання, кВт:</label>
+                    <input type="number" step="any" id="P_sc_kW" required>
+
+                    <label for="i0_percent">Струм неробочого ходу, %:</label>
+                    <input type="number" step="any" id="i0_percent" required>
+
+                    <button type="submit">Розрахувати</button>
+                </form>
+        </div>
+
+        <div class="results-column">
+            <div class="results-container">
+                <h2>Результати розрахунку</h2>
+                <div id="results-placeholder">
+                    <p>Результати розрахунків з'являться тут.</p>
+                </div>
+                <div id="results-output" class="hidden">
+                    <button id="download-pdf">Скачати PDF</button>
+                    <div id="results-sections"></div>
+                    <div id="formulas-container"></div>
+                    <div id="plots-container"></div>
+                </div>
+                <div id="error-container" class="hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
