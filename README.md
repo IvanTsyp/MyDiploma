@@ -1,1 +1,1 @@
-In therminal run: python app.py
+In terminal run: python app.py
